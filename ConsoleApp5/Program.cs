@@ -11,9 +11,9 @@ namespace ConsoleApp5
     {
         static void Main(string[] args)
         {
-            
 
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("╔══════════════════════════════════╗");
             Console.WriteLine("║                                  ║");
             Console.WriteLine("║           Agenzia delle          ║");
@@ -24,12 +24,19 @@ namespace ConsoleApp5
 
             Contribuente contribuente = new Contribuente();
             contribuente.GetName();
+            Console.WriteLine("\n");
             contribuente.GetSurname();
+            Console.WriteLine("\n");
             contribuente.GetCity();
+            Console.WriteLine("\n");
             contribuente.CheckData();
+            Console.WriteLine("\n");
             contribuente.CheckSex();
+            Console.WriteLine("\n");
             contribuente.GetValidCF();
+            Console.WriteLine("\n");
             contribuente.CheckIncome();
+            Console.WriteLine("\n");
             contribuente.Details();
 
 

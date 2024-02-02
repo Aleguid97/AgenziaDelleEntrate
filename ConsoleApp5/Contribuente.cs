@@ -64,18 +64,20 @@ namespace ConsoleApp4
             string codiceFiscale;
             do
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Inserisci il tuo codice fiscale:");
                 codiceFiscale = Console.ReadLine();
 
                 if (codiceFiscale.Length != 16)
                 {
                     Console.WriteLine("CF non valido");
+                    Console.ForegroundColor = ConsoleColor.Red;
                 }
 
             } while (codiceFiscale.Length != 16);
-
-            Console.WriteLine("CF corretto");
-            _codiceFiscale = codiceFiscale;
+          
+            _codiceFiscale = codiceFiscale;  
+            _codiceFiscale.ToUpper();
         }
 
         public void GetName()
@@ -84,6 +86,7 @@ namespace ConsoleApp4
 
             do
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Inserisci il tuo nome:");
                 nome = Console.ReadLine();
 
@@ -91,8 +94,9 @@ namespace ConsoleApp4
                 bool contieneNumero = ContieneNumero(nome);
 
                 if (contieneNumero)
-                {
+                {   Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Nome non valido, contiene un numero.");
+                    
                 }
 
             } while (ContieneNumero(nome)); // Continua a richiedere il nome finché contiene un numero
@@ -105,7 +109,7 @@ namespace ConsoleApp4
             string cognome;
 
             do
-            {
+            {   Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Inserisci il tuo cognome:");
                 cognome = Console.ReadLine();
 
@@ -113,8 +117,10 @@ namespace ConsoleApp4
                 bool contieneNumeroCognome = ContieneNumero(cognome);
 
                 if (contieneNumeroCognome)
-                {
+                {   
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Cognome non valido, contiene un numero.");
+                    
                 }
 
             } while (ContieneNumero(cognome)); // Continua a richiedere il cognome finché contiene un numero.
@@ -132,6 +138,7 @@ namespace ConsoleApp4
         {
             do
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Inserisci il tuo sesso:");
                 string inputSesso = Console.ReadLine();
 
@@ -142,8 +149,9 @@ namespace ConsoleApp4
                     break;
                 }
                 else
-                {
+                {   Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Sesso non valido. Riprova.");
+                    
                 }
 
             } while (true);
@@ -165,22 +173,28 @@ namespace ConsoleApp4
         public void CheckData()
         {
             do
-            {
-                Console.WriteLine("Inserisci la tua data di nascita:"); //Controllo che la data sia valida sia nel formato sia che l'anno sia quello di un'essere umano in vita.
+            {   Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Inserisci la tua data di nascita:"); //Controllo che la data sia valida sia nel formato sia che l'anno sia quello di un essere umano in vita.
 
                 if (DateTime.TryParse(Console.ReadLine(), out DateTime inputDate))
                 {
                     if (inputDate.Year < 1880)
-                    {
+                    {   
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Non esisti più.");
+                        
                     }
                     else if (inputDate.Year > 2120)
-                    {
+                    {   
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Non esisti ancora.");
+                        
                     }
                     else if (inputDate.Day > 31 || inputDate.Month > 12)
-                    {
+                    {   
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Formato Data non valido.");
+                        
                     }
                     else
                     {
@@ -189,8 +203,9 @@ namespace ConsoleApp4
                     }
                 }
                 else
-                {
+                {   Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Formato data non valido. Riprova.");
+                    
                 }
 
             } while (true);
@@ -228,16 +243,21 @@ namespace ConsoleApp4
                 RedditoAnnuale = inputRedditoAnnuale;
                 Console.WriteLine("Reddito annuale: $ " + RedditoAnnuale);
                 decimal imposta = CheckIncome();
-
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Nome del Contribuente {NomeContribuente} {CognomeContribuente} residente a {ComuneResidenza}");
-                Console.WriteLine("Imposta da pagare: $ " + imposta);
+                Console.WriteLine($"CF: {CodiceFiscale}");
+                Console.WriteLine("\n");
+                Console.WriteLine("Imposta da pagare: € " + imposta);
             }
             else
             {
                 Console.WriteLine("Errore: Formato reddito non valido.");
+                Console.ForegroundColor = ConsoleColor.Red;
             }
 
             Console.ReadLine();
+
+            
         }
 
 
