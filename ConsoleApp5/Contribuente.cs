@@ -225,7 +225,7 @@ namespace ConsoleApp4
             Console.WriteLine("Inserisci il tuo reddito");
             if (decimal.TryParse(Console.ReadLine(), out decimal inputRedditoAnnuale))
             {
-                RedditoAnnuale = inputRedditoAnnuale; // Update the instance variable
+                RedditoAnnuale = inputRedditoAnnuale;
                 Console.WriteLine("Reddito annuale: $ " + RedditoAnnuale);
                 decimal imposta = CheckIncome();
 
