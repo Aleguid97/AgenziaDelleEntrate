@@ -244,8 +244,6 @@ namespace ConsoleApp4
                 Console.WriteLine("Reddito annuale: $ " + RedditoAnnuale);
                 decimal imposta = CheckIncome();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Nome del Contribuente {NomeContribuente} {CognomeContribuente} residente a {ComuneResidenza}");
-                Console.WriteLine($"CF: {CodiceFiscale}");
                 Console.WriteLine("\n");
                 Console.WriteLine("Imposta da pagare: € " + imposta);
             }
